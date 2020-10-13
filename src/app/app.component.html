@@ -1,0 +1,37 @@
+<!-- Connect user to Wi-Fi -->
+<div class="wrapper">
+  <button (click)="addUser()">Add new user</button>
+</div>
+
+<div class="wrapper">
+  <!-- Playlist -->
+  <div>
+    <!-- Title -->
+    <h1>Songs</h1>
+    <!-- Songs -->
+    <ul *ngIf="songs.length">
+      <li *ngFor="let song of songs">{{ song.name }}</li>
+    </ul>
+    <!-- Nothing text -->
+    <p class="hint" *ngIf="!songs.length">Playlist is empty. Try inviting people to the cafe!</p>
+  </div>
+  <!-- Users -->
+  <div>
+    <!-- Title -->
+    <h1>Users</h1>
+    <!-- Songs -->
+    <ul *ngIf="users.length">
+      <li *ngFor="let user of users">
+        Name: {{ user.name }}
+        <div>
+          Favorite Artists:
+          <span *ngFor="let artist of user.likes; let last = last">
+            {{ artist.name }} <ng-template [ngIf]="!last">, </ng-template>
+          </span>
+        </div>
+      </li>
+    </ul>
+    <!-- Nothing text -->
+    <p class="hint" *ngIf="!users.length">No one is in the cafe. Try inviting people to the cafe!</p>
+  </div>
+</div>
